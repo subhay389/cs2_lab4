@@ -139,12 +139,13 @@ void sortpopulate(int num) {
 
 
 void deleteRepeat() {
-	node *temp = head, *temp1; 
-	while (temp != NULL) {
+	node *temp = head;
+	node *temp1;
+	while (temp->next != NULL) {
 		if (temp->value = temp->next->value) {
 			temp1 = temp->next;
-			temp->next = temp1->next;
-			free(temp1);
+			temp->next = temp->next->next;
+			delete(temp1);
 		}
 		temp = temp->next;
 	}
