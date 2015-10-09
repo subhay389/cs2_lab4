@@ -22,7 +22,7 @@ int main() {
 
 	while (!infile.eof()) {
 		infile >> num;
-		populate(num);
+		sortpopulate(num);
 
 	}
 
@@ -101,28 +101,35 @@ void sortpopulate(int num) {
 */
 
 void sortpopulate(int num) {
-	int count = 0;
+	
 	node *temp = new node;
 	
-	if (head = NULL) {
+	if (head == NULL) 
+	{
 		head = temp;
 		temp->value = num; 
 		temp->next = NULL;
+		cout << "test ";
+	
 		return;
 	}
 	else 
 	{
 		node* temp2 = head;
-		if (temp2->value > num) {
-			temp->next = temp2->next;
+		if (temp2->value > num) 
+		{	
+			temp->next = temp2;
 			head = temp;
 
 		}
-		else {
+		else 
+		{
 			
-			while (temp2->next != NULL && temp2->next->value < num) {
+			while (temp2->next != NULL && temp2->next->value < num) 
+			{
 				temp2 = temp2->next;
-				if (temp2->next == NULL) {
+				if (temp2->next == NULL) 
+				{
 					temp->value = num;
 					temp2->next = temp; 
 					temp->next = NULL;
@@ -142,12 +149,14 @@ void deleteRepeat() {
 	node *temp = head;
 	node *temp1;
 	while (temp->next != NULL) {
-		if (temp->value = temp->next->value) {
+		if (temp->value == temp->next->value) {
 			temp1 = temp->next;
 			temp->next = temp->next->next;
-			delete(temp1);
+			delete temp1;
 		}
-		temp = temp->next;
+		if (temp->next != NULL) {
+			temp = temp->next;
+		}
 	}
 }
 
